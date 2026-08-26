@@ -20,11 +20,15 @@ a {
   color: inherit;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 .header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid #e8ecf3;
 }
@@ -46,7 +50,7 @@ a {
 }
 
 .logo span {
-  color: #6c63ff;
+  color: #ff7a18;
 }
 
 .nav-links {
@@ -63,7 +67,7 @@ a {
 }
 
 .nav-links a:hover {
-  color: #6c63ff;
+  color: #1473e6;
 }
 
 .menu-toggle {
@@ -74,6 +78,10 @@ a {
   cursor: pointer;
 }
 
+/* =========================
+   HERO
+========================= */
+
 .hero {
   max-width: 1150px;
   margin: auto;
@@ -83,11 +91,43 @@ a {
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
   gap: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: rgba(20, 115, 230, 0.08);
+  border-radius: 50%;
+  top: 40px;
+  right: -100px;
+  filter: blur(10px);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 122, 24, 0.08);
+  border-radius: 50%;
+  bottom: -100px;
+  left: -80px;
+  filter: blur(10px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 .eyebrow,
 .section-heading p {
-  color: #6c63ff;
+  color: #1473e6;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 2px;
@@ -100,7 +140,10 @@ a {
 }
 
 .hero h1 span {
-  color: #6c63ff;
+  background: linear-gradient(90deg, #1473e6, #ff7a18);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero h2 {
@@ -114,6 +157,10 @@ a {
   color: #69758b;
   font-size: 17px;
 }
+
+/* =========================
+   BUTTONS
+========================= */
 
 .hero-buttons,
 .social-buttons {
@@ -129,58 +176,146 @@ a {
   padding: 12px 19px;
   border-radius: 10px;
   font-weight: 700;
-  transition: 0.25s;
+  transition: all 0.3s ease;
 }
 
+/* Orange + Blue main button */
 .btn.primary {
-  background: #6c63ff;
   color: white;
+  border: none;
+  background: linear-gradient(
+    135deg,
+    #1473e6 0%,
+    #1473e6 45%,
+    #ff7a18 100%
+  );
+  box-shadow: 0 8px 20px rgba(20, 115, 230, 0.25);
 }
 
-.btn.secondary,
+.btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(255, 122, 24, 0.3);
+}
+
+/* Orange outline button */
+.btn.secondary {
+  color: #ff6b00;
+  background: #fff;
+  border: 2px solid #ff7a18;
+}
+
+.btn.secondary:hover {
+  color: white;
+  background: linear-gradient(135deg, #ff7a18, #1473e6);
+  border-color: transparent;
+  transform: translateY(-3px);
+}
+
+/* Social buttons */
 .social-btn {
-  border: 1px solid #dfe4ed;
+  color: #1473e6;
   background: white;
-  color: #33405a;
+  border: 1px solid #b9d7f7;
+  box-shadow: 0 5px 15px rgba(20, 115, 230, 0.08);
 }
 
-.btn:hover,
 .social-btn:hover {
-  transform: translateY(-2px);
+  color: white;
+  border-color: transparent;
+  background: linear-gradient(135deg, #1473e6, #ff7a18);
+  transform: translateY(-3px);
 }
+
+/* =========================
+   PROFILE IMAGE - CIRCLE
+========================= */
 
 .hero-image-wrap {
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 420px;
+  z-index: 2;
 }
 
+/* Colorful circular ring */
 .image-ring {
   position: absolute;
-  width: 360px;
-  height: 360px;
+  width: 390px;
+  height: 390px;
   border-radius: 50%;
-  border: 2px solid #cfcaff;
-  transform: rotate(10deg);
+
+  background: linear-gradient(
+    135deg,
+    #1473e6,
+    #42a5ff,
+    #ff7a18,
+    #ff9f43
+  );
+
+  animation: rotateRing 8s linear infinite;
+
+  box-shadow:
+    0 0 0 8px rgba(20, 115, 230, 0.08),
+    0 20px 50px rgba(20, 115, 230, 0.2);
+}
+
+/* White inner space */
+.image-ring::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  background: white;
+  border-radius: 50%;
 }
 
 .profile-image {
-  width: 330px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
+
+  /* Makes the picture perfectly circular */
+  border-radius: 50%;
+
   object-fit: cover;
-  object-position: center;
-  border-radius: 45% 45% 20px 20px;
+  object-position: center 25%;
+
   position: relative;
   z-index: 1;
-  box-shadow: 0 25px 60px rgba(45, 54, 85, 0.2);
+
+  border: 7px solid white;
+
+  box-shadow:
+    0 20px 50px rgba(23, 32, 51, 0.25),
+    0 0 35px rgba(20, 115, 230, 0.18);
 }
+
+/* Ring animation */
+@keyframes rotateRing {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   SECTIONS
+========================= */
 
 .section {
   padding: 90px 22px;
 }
 
 .section.alt {
-  background: #f7f8fc;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 115, 230, 0.04),
+      rgba(255, 122, 24, 0.05)
+    );
 }
 
 .section-heading {
@@ -192,6 +327,10 @@ a {
   font-size: 38px;
   margin-top: 5px;
 }
+
+/* =========================
+   ABOUT
+========================= */
 
 .about-card,
 .skills-grid,
@@ -210,11 +349,16 @@ a {
   border-radius: 18px;
   padding: 30px;
   box-shadow: 0 10px 35px rgba(30, 40, 70, 0.06);
+  border-left: 5px solid #1473e6;
 }
 
 .about-card p + p {
   margin-top: 14px;
 }
+
+/* =========================
+   SKILLS
+========================= */
 
 .skills-grid {
   display: grid;
@@ -227,6 +371,21 @@ a {
   padding: 28px;
   border-radius: 18px;
   border: 1px solid #e8ecf3;
+  box-shadow: 0 8px 25px rgba(30, 40, 70, 0.05);
+  transition: 0.3s;
+}
+
+.skill-card:nth-child(odd) {
+  border-top: 4px solid #1473e6;
+}
+
+.skill-card:nth-child(even) {
+  border-top: 4px solid #ff7a18;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(30, 40, 70, 0.1);
 }
 
 .skill-card h3 {
@@ -243,11 +402,20 @@ a {
 .language-list span {
   padding: 7px 11px;
   border-radius: 30px;
-  background: #efefff;
-  color: #5148c7;
+  background: linear-gradient(
+    135deg,
+    #eaf4ff,
+    #fff0e5
+  );
+  color: #1768b5;
   font-size: 13px;
   font-weight: 700;
+  border: 1px solid #d7e8f9;
 }
+
+/* =========================
+   PROJECT
+========================= */
 
 .project-card {
   display: grid;
@@ -258,12 +426,23 @@ a {
   border-radius: 20px;
   padding: 32px;
   box-shadow: 0 10px 35px rgba(30, 40, 70, 0.06);
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(90deg, #1473e6, #ff7a18) 1;
 }
 
 .project-number {
   font-size: 44px;
   font-weight: 800;
-  color: #6c63ff;
+
+  background: linear-gradient(
+    135deg,
+    #1473e6,
+    #ff7a18
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .project-content h3 {
@@ -283,8 +462,16 @@ a {
   color: #4b5770;
 }
 
+.project-points div::first-letter {
+  color: #ff7a18;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
 .timeline {
-  border-left: 2px solid #d9dcf0;
+  border-left: 3px solid #1473e6;
   padding-left: 30px;
 }
 
@@ -295,13 +482,21 @@ a {
 
 .timeline-dot {
   position: absolute;
-  left: -40px;
+  left: -41px;
   top: 5px;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: #6c63ff;
+
+  background: linear-gradient(
+    135deg,
+    #1473e6,
+    #ff7a18
+  );
+
   border: 4px solid #f7f8fc;
+
+  box-shadow: 0 0 0 3px rgba(20, 115, 230, 0.15);
 }
 
 .timeline-content {
@@ -309,10 +504,11 @@ a {
   padding: 24px;
   border-radius: 16px;
   border: 1px solid #e8ecf3;
+  box-shadow: 0 8px 25px rgba(30, 40, 70, 0.05);
 }
 
 .timeline-date {
-  color: #6c63ff;
+  color: #ff7a18;
   font-size: 13px;
   font-weight: 800;
 }
@@ -321,6 +517,10 @@ a {
   margin: 6px 0;
 }
 
+/* =========================
+   LANGUAGES
+========================= */
+
 .language-list {
   display: flex;
   flex-wrap: wrap;
@@ -328,16 +528,38 @@ a {
 }
 
 .language-list span {
-  background: #f0f0ff;
+  background: linear-gradient(
+    135deg,
+    #1473e6,
+    #ff7a18
+  );
+  color: white;
+  border: none;
 }
 
+/* =========================
+   CONTACT
+========================= */
+
 .contact-section {
-  background: #18243b;
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(20, 115, 230, 0.25),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(255, 122, 24, 0.25),
+      transparent 30%
+    ),
+    #18243b;
+
   color: white;
 }
 
 .contact-section .section-heading p {
-  color: #a9a3ff;
+  color: #ff9a4d;
 }
 
 .contact-grid {
@@ -347,10 +569,16 @@ a {
 }
 
 .contact-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 18px;
   padding: 28px;
+  transition: 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .contact-icon {
@@ -359,7 +587,13 @@ a {
   display: grid;
   place-items: center;
   border-radius: 12px;
-  background: #6c63ff;
+
+  background: linear-gradient(
+    135deg,
+    #1473e6,
+    #ff7a18
+  );
+
   margin-bottom: 15px;
   font-weight: 800;
 }
@@ -373,6 +607,14 @@ a {
   word-break: break-word;
 }
 
+.contact-card a:hover {
+  color: #ff9a4d;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 footer {
   text-align: center;
   padding: 22px;
@@ -381,7 +623,12 @@ footer {
   font-size: 13px;
 }
 
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 800px) {
+
   .menu-toggle {
     display: block;
   }
@@ -419,6 +666,7 @@ footer {
 
   .hero-image-wrap {
     order: -1;
+    min-height: 370px;
   }
 
   .skills-grid,
@@ -435,17 +683,22 @@ footer {
   }
 
   .image-ring {
-    width: 310px;
-    height: 310px;
+    width: 330px;
+    height: 330px;
   }
 
   .profile-image {
-    width: 285px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
   }
 }
 
+/* =========================
+   SMALL MOBILE
+========================= */
+
 @media (max-width: 480px) {
+
   .section {
     padding: 65px 16px;
   }
@@ -467,13 +720,29 @@ footer {
     font-size: 31px;
   }
 
+  .hero-image-wrap {
+    min-height: 315px;
+  }
+
   .profile-image {
     width: 250px;
-    height: 310px;
+    height: 250px;
+    border-width: 6px;
   }
 
   .image-ring {
     width: 275px;
     height: 275px;
+  }
+
+  .btn,
+  .social-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-buttons,
+  .social-buttons {
+    width: 100%;
   }
 }
