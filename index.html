@@ -36,8 +36,8 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--light);
       color: var(--dark);
+      background: var(--light);
       line-height: 1.6;
     }
 
@@ -50,7 +50,7 @@
        HEADER
     ========================= */
 
-    header {
+    .header {
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -59,7 +59,7 @@
       border-bottom: 1px solid rgba(85, 200, 232, 0.2);
     }
 
-    nav {
+    .navbar {
       max-width: 1150px;
       min-height: 72px;
       margin: auto;
@@ -71,7 +71,7 @@
     }
 
     .logo {
-      font-size: 26px;
+      font-size: 27px;
       font-weight: 800;
       color: var(--dark);
     }
@@ -82,19 +82,28 @@
 
     .nav-links {
       display: flex;
-      gap: 28px;
       list-style: none;
+      gap: 25px;
     }
 
     .nav-links a {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
-      color: #555;
-      transition: 0.3s;
+      color: #555555;
+      transition: 0.25s;
     }
 
     .nav-links a:hover {
       color: var(--cyan);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--dark);
+      font-size: 28px;
+      cursor: pointer;
     }
 
     /* =========================
@@ -102,11 +111,13 @@
     ========================= */
 
     .hero {
+      max-width: 1150px;
+      margin: auto;
       min-height: 650px;
-      padding: 70px 22px;
+      padding: 80px 22px;
 
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       align-items: center;
       gap: 50px;
 
@@ -123,11 +134,13 @@
       width: 350px;
       height: 350px;
 
-      right: -100px;
-      top: 30px;
+      background: rgba(255, 255, 255, 0.18);
 
       border-radius: 50%;
-      background: rgba(255,255,255,0.18);
+
+      top: 40px;
+      right: -100px;
+
       filter: blur(10px);
     }
 
@@ -138,11 +151,13 @@
       width: 280px;
       height: 280px;
 
-      left: -80px;
-      bottom: -100px;
+      background: rgba(255, 255, 255, 0.18);
 
       border-radius: 50%;
-      background: rgba(255,255,255,0.18);
+
+      bottom: -100px;
+      left: -80px;
+
       filter: blur(10px);
     }
 
@@ -151,18 +166,19 @@
       z-index: 2;
     }
 
-    .welcome {
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 3px;
+    .eyebrow {
       color: var(--dark);
-      margin-bottom: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
     }
 
     .hero h1 {
-      font-size: clamp(42px, 6vw, 70px);
-      line-height: 1.05;
-      margin-bottom: 15px;
+      margin: 12px 0 10px;
+
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.08;
+
       color: var(--dark);
     }
 
@@ -179,72 +195,107 @@
     }
 
     .hero h2 {
-      font-size: 25px;
+      font-size: 24px;
       margin-bottom: 18px;
-      color: #444;
+      color: #444444;
     }
 
     .hero-text {
-      max-width: 600px;
+      max-width: 620px;
+      color: #444444;
       font-size: 17px;
-      color: #444;
     }
 
     /* =========================
        BUTTONS
     ========================= */
 
-    .buttons {
+    .hero-buttons,
+    .social-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 28px;
     }
 
-    .btn {
-      padding: 13px 21px;
-      border-radius: 10px;
-      font-weight: 700;
-      transition: 0.3s;
+    .btn,
+    .social-btn {
       display: inline-block;
+      padding: 12px 19px;
+      border-radius: 10px;
+
+      font-weight: 700;
+
+      transition: all 0.3s ease;
     }
 
-    .btn-primary {
-      background: var(--cyan);
+    .btn.primary {
       color: var(--white);
-      box-shadow: 0 8px 20px rgba(51,51,51,0.2);
+      border: none;
+
+      background: var(--cyan);
+
+      box-shadow:
+        0 8px 20px rgba(51, 51, 51, 0.2);
     }
 
-    .btn-primary:hover {
+    .btn.primary:hover {
+      color: var(--white);
       background: var(--coral);
+
       transform: translateY(-3px);
+
+      box-shadow:
+        0 12px 28px rgba(51, 51, 51, 0.25);
     }
 
-    .btn-secondary {
-      background: rgba(255,255,255,0.75);
+    .btn.secondary {
       color: var(--dark);
+      background: rgba(255, 255, 255, 0.75);
+
       border: 2px solid var(--cyan);
     }
 
-    .btn-secondary:hover {
-      background: var(--cyan);
+    .btn.secondary:hover {
       color: var(--white);
+      background: var(--cyan);
+      border-color: var(--cyan);
+
+      transform: translateY(-3px);
+    }
+
+    .social-btn {
+      color: var(--dark);
+      background: rgba(255, 255, 255, 0.78);
+
+      border: 1px solid rgba(51, 51, 51, 0.18);
+
+      box-shadow:
+        0 5px 15px rgba(51, 51, 51, 0.08);
+    }
+
+    .social-btn:hover {
+      color: var(--white);
+      background: var(--cyan);
+      border-color: var(--cyan);
+
       transform: translateY(-3px);
     }
 
     /* =========================
-       PROFILE PICTURE
+       PROFILE IMAGE
     ========================= */
 
-    .hero-image {
+    .hero-image-wrap {
       position: relative;
-      z-index: 2;
 
       display: flex;
       justify-content: center;
       align-items: center;
 
-      min-height: 430px;
+      min-height: 420px;
+
+      z-index: 2;
     }
 
     .image-ring {
@@ -263,31 +314,45 @@
         var(--white)
       );
 
-      animation: rotate 8s linear infinite;
+      animation: rotateRing 8s linear infinite;
 
       box-shadow:
-        0 0 0 8px rgba(85,200,232,0.12),
-        0 20px 50px rgba(51,51,51,0.2);
+        0 0 0 8px rgba(85, 200, 232, 0.1),
+        0 20px 50px rgba(51, 51, 51, 0.2);
     }
 
-    .profile-picture {
-      position: relative;
-      z-index: 2;
+    .image-ring::after {
+      content: "";
 
+      position: absolute;
+
+      inset: 7px;
+
+      background: var(--light);
+
+      border-radius: 50%;
+    }
+
+    .profile-image {
       width: 350px;
       height: 350px;
 
-      object-fit: cover;
-      object-position: center;
-
       border-radius: 50%;
+
+      object-fit: cover;
+      object-position: center 25%;
+
+      position: relative;
+      z-index: 1;
+
       border: 7px solid var(--white);
 
       box-shadow:
-        0 20px 50px rgba(51,51,51,0.25);
+        0 20px 50px rgba(51, 51, 51, 0.3),
+        0 0 35px rgba(85, 200, 232, 0.15);
     }
 
-    @keyframes rotate {
+    @keyframes rotateRing {
       from {
         transform: rotate(0deg);
       }
@@ -301,28 +366,35 @@
        SECTIONS
     ========================= */
 
-    section {
-      padding: 85px 22px;
+    .section {
+      padding: 90px 22px;
+      background: var(--light);
     }
 
-    .container {
+    .section.alt {
+      background: linear-gradient(
+        135deg,
+        #B6A3B4,
+        #F5F4FA
+      );
+
+      color: var(--dark);
+    }
+
+    .section-heading {
       max-width: 1150px;
-      margin: auto;
+      margin: 0 auto 38px;
     }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-title p {
+    .section-heading p {
       color: var(--coral);
+
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 2px;
     }
 
-    .section-title h2 {
+    .section-heading h2 {
       font-size: 38px;
       margin-top: 5px;
       color: var(--dark);
@@ -332,23 +404,27 @@
        ABOUT
     ========================= */
 
-    .about {
-      background: var(--light);
-    }
-
     .about-card {
+      max-width: 1150px;
+      margin-left: auto;
+      margin-right: auto;
+
       background: var(--white);
-      padding: 35px;
+
+      border: 1px solid rgba(85, 200, 232, 0.18);
+
       border-radius: 18px;
 
-      border-left: 5px solid var(--coral);
+      padding: 30px;
 
       box-shadow:
-        0 10px 35px rgba(51,51,51,0.1);
+        0 10px 35px rgba(51, 51, 51, 0.12);
+
+      border-left: 5px solid var(--coral);
     }
 
     .about-card p + p {
-      margin-top: 15px;
+      margin-top: 14px;
     }
 
     /* =========================
@@ -364,6 +440,9 @@
     }
 
     .picture-grid {
+      max-width: 1150px;
+      margin: auto;
+
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
@@ -371,11 +450,13 @@
 
     .picture-card {
       overflow: hidden;
-      border-radius: 18px;
+
       background: var(--white);
 
+      border-radius: 18px;
+
       box-shadow:
-        0 10px 30px rgba(51,51,51,0.12);
+        0 10px 30px rgba(51, 51, 51, 0.12);
 
       transition: 0.3s;
     }
@@ -387,7 +468,9 @@
     .picture-card img {
       width: 100%;
       height: 250px;
+
       object-fit: cover;
+
       display: block;
     }
 
@@ -400,7 +483,7 @@
     }
 
     .picture-card-content p {
-      color: #666;
+      color: #666666;
       font-size: 14px;
     }
 
@@ -408,25 +491,30 @@
        SKILLS
     ========================= */
 
-    .skills {
-      background: var(--white);
-    }
-
     .skills-grid {
+      max-width: 1150px;
+      margin: auto;
+
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
     .skill-card {
+      background: var(--white);
+
+      color: var(--dark);
+
       padding: 28px;
-      background: var(--light);
 
       border-radius: 18px;
+
+      border: 1px solid rgba(85, 200, 232, 0.18);
+
       border-top: 4px solid var(--cyan);
 
       box-shadow:
-        0 8px 25px rgba(51,51,51,0.08);
+        0 8px 25px rgba(51, 51, 51, 0.12);
 
       transition: 0.3s;
     }
@@ -437,70 +525,294 @@
 
     .skill-card:hover {
       transform: translateY(-5px);
+
+      box-shadow:
+        0 15px 35px rgba(51, 51, 51, 0.18);
     }
 
     .skill-card h3 {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 9px;
     }
 
     .tags span {
-      padding: 7px 12px;
+      padding: 7px 11px;
+
       border-radius: 30px;
 
       background: linear-gradient(
         90deg,
-        rgba(240,109,120,0.18),
-        rgba(85,200,232,0.18)
+        rgba(240, 109, 120, 0.18),
+        rgba(85, 200, 232, 0.18)
       );
 
-      border: 1px solid rgba(85,200,232,0.25);
+      color: var(--dark);
 
       font-size: 13px;
       font-weight: 700;
+
+      border: 1px solid rgba(85, 200, 232, 0.25);
+    }
+
+    /* =========================
+       PROJECT
+    ========================= */
+
+    .project-card {
+      max-width: 1150px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 25px;
+
+      background: var(--white);
+
+      color: var(--dark);
+
+      border: 1px solid rgba(85, 200, 232, 0.18);
+
+      border-radius: 20px;
+
+      padding: 32px;
+
+      box-shadow:
+        0 10px 35px rgba(51, 51, 51, 0.12);
+
+      border-top: 5px solid var(--cyan);
+    }
+
+    .project-number {
+      font-size: 44px;
+      font-weight: 800;
+
+      background: linear-gradient(
+        135deg,
+        var(--coral),
+        var(--cyan)
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .project-content h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: #666666;
+    }
+
+    .project-points {
+      margin: 20px 0;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 9px;
+
+      color: #555555;
+    }
+
+    .project-points div::first-letter {
+      color: var(--coral);
+    }
+
+    /* =========================
+       TIMELINE
+    ========================= */
+
+    .timeline {
+      max-width: 1150px;
+      margin: auto;
+
+      border-left: 3px solid var(--cyan);
+
+      padding-left: 30px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 35px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+
+      left: -41px;
+      top: 5px;
+
+      width: 20px;
+      height: 20px;
+
+      border-radius: 50%;
+
+      background: var(--coral);
+
+      border: 4px solid var(--light);
+
+      box-shadow:
+        0 0 0 3px rgba(85, 200, 232, 0.15);
+    }
+
+    .timeline-content {
+      background: var(--white);
+
+      color: var(--dark);
+
+      padding: 24px;
+
+      border-radius: 16px;
+
+      border: 1px solid rgba(85, 200, 232, 0.18);
+
+      box-shadow:
+        0 8px 25px rgba(51, 51, 51, 0.12);
+    }
+
+    .timeline-date {
+      color: var(--coral);
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .timeline-content h3 {
+      margin: 6px 0;
+    }
+
+    /* =========================
+       LANGUAGES
+    ========================= */
+
+    .language-list {
+      max-width: 1150px;
+      margin: auto;
+
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 12px;
+    }
+
+    .language-list span {
+      padding: 7px 11px;
+
+      border-radius: 30px;
+
+      background: var(--cyan);
+
+      color: var(--white);
+
+      border: 1px solid rgba(85, 200, 232, 0.3);
+
+      transition: 0.3s;
+    }
+
+    .language-list span:hover {
+      background: var(--coral);
+
+      transform: translateY(-2px);
     }
 
     /* =========================
        CONTACT
     ========================= */
 
-    .contact {
-      background: var(--gradient);
+    .contact-section {
+      background:
+        radial-gradient(
+          circle at 10% 20%,
+          rgba(240, 109, 120, 0.3),
+          transparent 30%
+        ),
+
+        radial-gradient(
+          circle at 90% 80%,
+          rgba(85, 200, 232, 0.25),
+          transparent 30%
+        ),
+
+        linear-gradient(
+          135deg,
+          #B6A3B4,
+          #55C8E8
+        );
+
+      color: var(--dark);
+    }
+
+    .contact-section .section-heading p {
+      color: var(--coral);
     }
 
     .contact-grid {
+      max-width: 1150px;
+      margin: auto;
+
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+
       gap: 20px;
     }
 
     .contact-card {
-      padding: 28px;
+      background: rgba(255, 255, 255, 0.4);
+
+      border: 1px solid rgba(255, 255, 255, 0.5);
+
       border-radius: 18px;
 
-      background: rgba(255,255,255,0.35);
-      border: 1px solid rgba(255,255,255,0.5);
+      padding: 28px;
 
       transition: 0.3s;
     }
 
     .contact-card:hover {
       transform: translateY(-5px);
-      background: rgba(255,255,255,0.55);
+
+      background: rgba(255, 255, 255, 0.6);
+
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 12px;
+
+      background: var(--white);
+
+      color: var(--coral);
+
+      margin-bottom: 15px;
+
+      font-weight: 800;
     }
 
     .contact-card h3 {
-      margin-bottom: 7px;
+      margin-bottom: 6px;
     }
 
-    .contact-card p {
-      color: #444;
+    .contact-card a {
+      color: #444444;
       word-break: break-word;
+    }
+
+    .contact-card a:hover {
+      color: var(--coral);
     }
 
     /* =========================
@@ -508,13 +820,17 @@
     ========================= */
 
     footer {
-      padding: 22px;
       text-align: center;
 
+      padding: 22px;
+
       background: var(--black);
+
       color: var(--white);
 
       font-size: 13px;
+
+      border-top: 1px solid rgba(85, 200, 232, 0.2);
     }
 
     /* =========================
@@ -523,26 +839,75 @@
 
     @media (max-width: 800px) {
 
+      .menu-toggle {
+        display: block;
+      }
+
       .nav-links {
-        gap: 15px;
+        display: none;
+
+        position: absolute;
+
+        top: 72px;
+        left: 0;
+        right: 0;
+
+        padding: 20px;
+
+        flex-direction: column;
+
+        background: var(--light);
+
+        border-bottom: 1px solid rgba(85, 200, 232, 0.2);
+      }
+
+      .nav-links a {
+        color: var(--dark);
+      }
+
+      .nav-links a:hover {
+        color: var(--cyan);
+      }
+
+      .nav-links.active {
+        display: flex;
       }
 
       .hero {
         grid-template-columns: 1fr;
+
         text-align: center;
+
+        padding-top: 55px;
       }
 
       .hero-text {
         margin: auto;
       }
 
-      .buttons {
+      .hero-buttons,
+      .social-buttons {
         justify-content: center;
       }
 
-      .hero-image {
+      .hero-image-wrap {
         order: -1;
-        min-height: 350px;
+
+        min-height: 370px;
+      }
+
+      .skills-grid,
+      .contact-grid,
+      .picture-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      .project-points {
+        grid-template-columns: 1fr;
       }
 
       .image-ring {
@@ -550,30 +915,25 @@
         height: 330px;
       }
 
-      .profile-picture {
+      .profile-image {
         width: 300px;
         height: 300px;
       }
-
-      .picture-grid,
-      .skills-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
     }
+
+    /* =========================
+       SMALL MOBILE
+    ========================= */
 
     @media (max-width: 480px) {
 
-      nav {
-        padding: 0 16px;
-      }
-
-      .nav-links {
-        display: none;
+      .section {
+        padding: 65px 16px;
       }
 
       .hero {
-        padding: 60px 16px;
+        padding-left: 16px;
+        padding-right: 16px;
       }
 
       .hero h1 {
@@ -584,12 +944,19 @@
         font-size: 20px;
       }
 
-      section {
-        padding: 65px 16px;
+      .section-heading h2 {
+        font-size: 31px;
       }
 
-      .section-title h2 {
-        font-size: 31px;
+      .hero-image-wrap {
+        min-height: 315px;
+      }
+
+      .profile-image {
+        width: 250px;
+        height: 250px;
+
+        border-width: 6px;
       }
 
       .image-ring {
@@ -597,14 +964,15 @@
         height: 275px;
       }
 
-      .profile-picture {
-        width: 250px;
-        height: 250px;
-      }
-
-      .btn {
+      .btn,
+      .social-btn {
         width: 100%;
         text-align: center;
+      }
+
+      .hero-buttons,
+      .social-buttons {
+        width: 100%;
       }
     }
   </style>
@@ -616,22 +984,52 @@
        HEADER
   ========================= -->
 
-  <header>
-    <nav>
+  <header class="header">
+
+    <nav class="navbar">
 
       <a href="#home" class="logo">
         Nishit<span>.</span>
       </a>
 
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#pictures">Pictures</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
+
+        <li>
+          <a href="#home">Home</a>
+        </li>
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+
+        <li>
+          <a href="#pictures">Pictures</a>
+        </li>
+
+        <li>
+          <a href="#skills">Skills</a>
+        </li>
+
+        <li>
+          <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+          <a href="#experience">Experience</a>
+        </li>
+
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+
       </ul>
 
+      <button class="menu-toggle" aria-label="Open menu">
+        ☰
+      </button>
+
     </nav>
+
   </header>
 
 
@@ -643,9 +1041,9 @@
 
     <div class="hero-content">
 
-      <div class="welcome">
+      <p class="eyebrow">
         WELCOME TO MY PORTFOLIO
-      </div>
+      </p>
 
       <h1>
         Hi, I'm <span>Nishit Chaudhari</span>
@@ -656,22 +1054,26 @@
       </h2>
 
       <p class="hero-text">
-        Welcome to my personal portfolio. Explore my journey,
-        skills, projects, experiences, and passion for technology.
+        Welcome to my personal portfolio. Explore my skills,
+        projects, experience, pictures, and passion for technology.
       </p>
 
-      <div class="buttons">
+      <div class="hero-buttons">
 
-        <a href="#about" class="btn btn-primary">
-          Explore My Portfolio
+        <a
+          href="#about"
+          class="btn primary"
+        >
+          Explore Portfolio
         </a>
 
-        <!-- VIEW ONLY - NO DOWNLOAD -->
+        <!-- VIEW RESUME ONLY -->
+        <!-- No download attribute -->
         <a
           href="resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          class="btn btn-secondary"
+          class="btn secondary"
         >
           View Resume
         </a>
@@ -683,15 +1085,14 @@
 
     <!-- PROFILE PICTURE -->
 
-    <div class="hero-image">
+    <div class="hero-image-wrap">
 
       <div class="image-ring"></div>
 
-      <!-- Replace with Nishit's actual picture -->
       <img
         src="images/nishit-profile.jpg"
         alt="Nishit Chaudhari"
-        class="profile-picture"
+        class="profile-image"
       >
 
     </div>
@@ -703,32 +1104,31 @@
        ABOUT
   ========================= -->
 
-  <section class="about" id="about">
+  <section class="section" id="about">
 
-    <div class="container">
+    <div class="section-heading">
 
-      <div class="section-title">
-        <p>GET TO KNOW ME</p>
-        <h2>About Me</h2>
-      </div>
+      <p>GET TO KNOW ME</p>
 
-      <div class="about-card">
+      <h2>About Me</h2>
 
-        <p>
-          Hi, I'm <strong>Nishit Chaudhari</strong>.
-          I'm passionate about technology, artificial intelligence,
-          machine learning, automation, and building creative
-          digital solutions.
-        </p>
+    </div>
 
-        <p>
-          This portfolio showcases my skills, projects, interests,
-          achievements, and experiences. I'm always interested in
-          learning new technologies and turning ideas into useful
-          real-world applications.
-        </p>
+    <div class="about-card">
 
-      </div>
+      <p>
+        Hi, I'm <strong>Nishit Chaudhari</strong>.
+        I'm passionate about technology, artificial intelligence,
+        machine learning, automation, and creating innovative
+        digital solutions.
+      </p>
+
+      <p>
+        This portfolio represents my learning journey, technical
+        skills, projects, experiences, and interests. I enjoy
+        exploring new technologies and transforming ideas into
+        practical real-world applications.
+      </p>
 
     </div>
 
@@ -739,58 +1139,72 @@
        PICTURES
   ========================= -->
 
-  <section class="pictures" id="pictures">
+  <section class="section pictures" id="pictures">
 
-    <div class="container">
+    <div class="section-heading">
 
-      <div class="section-title">
-        <p>MY GALLERY</p>
-        <h2>Pictures</h2>
+      <p>MY GALLERY</p>
+
+      <h2>Pictures</h2>
+
+    </div>
+
+    <div class="picture-grid">
+
+      <div class="picture-card">
+
+        <img
+          src="images/nishit-profile.jpg"
+          alt="Nishit Chaudhari"
+        >
+
+        <div class="picture-card-content">
+
+          <h3>My Profile</h3>
+
+          <p>
+            Welcome to my personal portfolio.
+          </p>
+
+        </div>
+
       </div>
 
-      <div class="picture-grid">
 
-        <div class="picture-card">
+      <div class="picture-card">
 
-          <img
-            src="images/nishit-profile.jpg"
-            alt="Nishit Chaudhari"
-          >
+        <img
+          src="images/project.jpg"
+          alt="Nishit project"
+        >
 
-          <div class="picture-card-content">
-            <h3>About Me</h3>
-            <p>A glimpse into my portfolio.</p>
-          </div>
+        <div class="picture-card-content">
 
-        </div>
+          <h3>My Projects</h3>
 
-
-        <div class="picture-card">
-
-          <img
-            src="images/project.jpg"
-            alt="Nishit's project"
-          >
-
-          <div class="picture-card-content">
-            <h3>My Projects</h3>
-            <p>Ideas transformed into technology.</p>
-          </div>
+          <p>
+            Building creative technology solutions.
+          </p>
 
         </div>
 
+      </div>
 
-        <div class="picture-card">
 
-          <img
-            src="images/technology.jpg"
-            alt="Technology and AI"
-          >
+      <div class="picture-card">
 
-          <div class="picture-card-content">
-            <h3>Technology</h3>
-            <p>Exploring AI, ML and modern technology.</p>
-          </div>
+        <img
+          src="images/technology.jpg"
+          alt="Technology"
+        >
+
+        <div class="picture-card-content">
+
+          <h3>Technology</h3>
+
+          <p>
+            Exploring AI, ML, software and innovation.
+          </p>
 
         </div>
 
@@ -805,70 +1219,115 @@
        SKILLS
   ========================= -->
 
-  <section class="skills" id="skills">
+  <section class="section" id="skills">
 
-    <div class="container">
+    <div class="section-heading">
 
-      <div class="section-title">
-        <p>WHAT I WORK WITH</p>
-        <h2>My Skills</h2>
+      <p>WHAT I WORK WITH</p>
+
+      <h2>My Skills</h2>
+
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+
+        <h3>Programming</h3>
+
+        <div class="tags">
+          <span>Python</span>
+          <span>Java</span>
+          <span>JavaScript</span>
+          <span>HTML</span>
+          <span>CSS</span>
+        </div>
+
       </div>
 
-      <div class="skills-grid">
 
-        <div class="skill-card">
+      <div class="skill-card">
 
-          <h3>Programming</h3>
+        <h3>AI & Machine Learning</h3>
 
-          <div class="tags">
-            <span>Python</span>
-            <span>Java</span>
-            <span>JavaScript</span>
-            <span>HTML</span>
-            <span>CSS</span>
-          </div>
-
+        <div class="tags">
+          <span>Machine Learning</span>
+          <span>Deep Learning</span>
+          <span>Generative AI</span>
+          <span>Automation</span>
         </div>
 
+      </div>
 
-        <div class="skill-card">
 
-          <h3>AI & Machine Learning</h3>
+      <div class="skill-card">
 
-          <div class="tags">
-            <span>Machine Learning</span>
-            <span>Generative AI</span>
-            <span>Deep Learning</span>
-            <span>Automation</span>
-          </div>
+        <h3>Web Development</h3>
 
+        <div class="tags">
+          <span>Frontend</span>
+          <span>Responsive Design</span>
+          <span>UI/UX</span>
+          <span>Web Applications</span>
         </div>
 
+      </div>
 
-        <div class="skill-card">
 
-          <h3>Web Development</h3>
+      <div class="skill-card">
 
-          <div class="tags">
-            <span>Frontend</span>
-            <span>Responsive Design</span>
-            <span>UI/UX</span>
-            <span>Web Apps</span>
-          </div>
+        <h3>Tools & Technologies</h3>
 
+        <div class="tags">
+          <span>Git</span>
+          <span>GitHub</span>
+          <span>APIs</span>
+          <span>Automation</span>
         </div>
 
+      </div>
 
-        <div class="skill-card">
+    </div>
 
-          <h3>Tools & Technologies</h3>
+  </section>
 
-          <div class="tags">
-            <span>Git</span>
-            <span>GitHub</span>
-            <span>APIs</span>
-            <span>Automation</span>
-          </div>
+
+  <!-- =========================
+       PROJECT
+  ========================= -->
+
+  <section class="section alt" id="projects">
+
+    <div class="section-heading">
+
+      <p>MY WORK</p>
+
+      <h2>Featured Project</h2>
+
+    </div>
+
+    <div class="project-card">
+
+      <div class="project-number">
+        01
+      </div>
+
+      <div class="project-content">
+
+        <h3>AI & Technology Project</h3>
+
+        <p>
+          A technology-focused project combining programming,
+          artificial intelligence, automation, and modern
+          development techniques.
+        </p>
+
+        <div class="project-points">
+
+          <div>AI Integration</div>
+          <div>Machine Learning</div>
+          <div>Automation</div>
+          <div>Web Development</div>
 
         </div>
 
@@ -880,40 +1339,166 @@
 
 
   <!-- =========================
+       EXPERIENCE
+  ========================= -->
+
+  <section class="section" id="experience">
+
+    <div class="section-heading">
+
+      <p>MY JOURNEY</p>
+
+      <h2>Experience</h2>
+
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content">
+
+          <div class="timeline-date">
+            PRESENT
+          </div>
+
+          <h3>
+            Technology & AI Learning
+          </h3>
+
+          <p>
+            Continuously developing technical skills and
+            exploring modern technologies in AI, machine
+            learning and software development.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content">
+
+          <div class="timeline-date">
+            PROJECT EXPERIENCE
+          </div>
+
+          <h3>
+            Personal Projects
+          </h3>
+
+          <p>
+            Creating practical projects to improve programming,
+            problem-solving and development skills.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       LANGUAGES
+  ========================= -->
+
+  <section class="section">
+
+    <div class="section-heading">
+
+      <p>TECHNICAL STACK</p>
+
+      <h2>Languages</h2>
+
+    </div>
+
+    <div class="language-list">
+
+      <span>Python</span>
+      <span>Java</span>
+      <span>JavaScript</span>
+      <span>HTML</span>
+      <span>CSS</span>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
        CONTACT
   ========================= -->
 
-  <section class="contact" id="contact">
+  <section class="section contact-section" id="contact">
 
-    <div class="container">
+    <div class="section-heading">
 
-      <div class="section-title">
-        <p>LET'S CONNECT</p>
-        <h2>Contact Me</h2>
+      <p>LET'S CONNECT</p>
+
+      <h2>Contact Me</h2>
+
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-card">
+
+        <div class="contact-icon">
+          @
+        </div>
+
+        <h3>Email</h3>
+
+        <a href="mailto:your-email@example.com">
+          your-email@example.com
+        </a>
+
       </div>
 
-      <div class="contact-grid">
 
-        <div class="contact-card">
-          <h3>Email</h3>
-          <p>
-            your-email@example.com
-          </p>
+      <div class="contact-card">
+
+        <div class="contact-icon">
+          in
         </div>
 
-        <div class="contact-card">
-          <h3>LinkedIn</h3>
-          <p>
-            linkedin.com/in/nishit-chaudhari
-          </p>
+        <h3>LinkedIn</h3>
+
+        <a
+          href="https://www.linkedin.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn Profile
+        </a>
+
+      </div>
+
+
+      <div class="contact-card">
+
+        <div class="contact-icon">
+          GH
         </div>
 
-        <div class="contact-card">
-          <h3>GitHub</h3>
-          <p>
-            github.com/nishit-chaudhari
-          </p>
-        </div>
+        <h3>GitHub</h3>
+
+        <a
+          href="https://github.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub Profile
+        </a>
 
       </div>
 
@@ -927,8 +1512,32 @@
   ========================= -->
 
   <footer>
+
     © 2026 Nishit Chaudhari | All Rights Reserved
+
   </footer>
+
+
+  <!-- =========================
+       MOBILE MENU
+  ========================= -->
+
+  <script>
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+  </script>
 
 </body>
 </html>
