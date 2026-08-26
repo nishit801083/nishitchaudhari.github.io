@@ -3,219 +3,932 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nishit Chaudhari - Software Testing and Java Full Stack Portfolio">
+
   <title>Nishit Chaudhari | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --coral: #F06D78;
+      --mauve: #B6A3B4;
+      --cyan: #55C8E8;
+      --light: #F5F4FA;
+      --dark: #333333;
+      --white: #FFFFFF;
+      --black: #000000;
+
+      --gradient: linear-gradient(
+        90deg,
+        #F06D78 0%,
+        #B6A3B4 50%,
+        #55C8E8 100%
+      );
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(245, 244, 250, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(85, 200, 232, 0.2);
+    }
+
+    nav {
+      max-width: 1150px;
+      min-height: 72px;
+      margin: auto;
+      padding: 0 22px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 700;
+      color: #555;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 650px;
+      padding: 70px 22px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 50px;
+
+      position: relative;
+      overflow: hidden;
+
+      background: var(--gradient);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+
+      width: 350px;
+      height: 350px;
+
+      right: -100px;
+      top: 30px;
+
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      filter: blur(10px);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+
+      width: 280px;
+      height: 280px;
+
+      left: -80px;
+      bottom: -100px;
+
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      filter: blur(10px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .welcome {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 70px);
+      line-height: 1.05;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+
+    .hero h1 span {
+      background: linear-gradient(
+        90deg,
+        #333333,
+        #55C8E8
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h2 {
+      font-size: 25px;
+      margin-bottom: 18px;
+      color: #444;
+    }
+
+    .hero-text {
+      max-width: 600px;
+      font-size: 17px;
+      color: #444;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      padding: 13px 21px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: var(--white);
+      box-shadow: 0 8px 20px rgba(51,51,51,0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--coral);
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.75);
+      color: var(--dark);
+      border: 2px solid var(--cyan);
+    }
+
+    .btn-secondary:hover {
+      background: var(--cyan);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       PROFILE PICTURE
+    ========================= */
+
+    .hero-image {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      min-height: 430px;
+    }
+
+    .image-ring {
+      position: absolute;
+
+      width: 390px;
+      height: 390px;
+
+      border-radius: 50%;
+
+      background: linear-gradient(
+        135deg,
+        var(--coral),
+        var(--mauve),
+        var(--cyan),
+        var(--white)
+      );
+
+      animation: rotate 8s linear infinite;
+
+      box-shadow:
+        0 0 0 8px rgba(85,200,232,0.12),
+        0 20px 50px rgba(51,51,51,0.2);
+    }
+
+    .profile-picture {
+      position: relative;
+      z-index: 2;
+
+      width: 350px;
+      height: 350px;
+
+      object-fit: cover;
+      object-position: center;
+
+      border-radius: 50%;
+      border: 7px solid var(--white);
+
+      box-shadow:
+        0 20px 50px rgba(51,51,51,0.25);
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 85px 22px;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title p {
+      color: var(--coral);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-top: 5px;
+      color: var(--dark);
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      background: var(--light);
+    }
+
+    .about-card {
+      background: var(--white);
+      padding: 35px;
+      border-radius: 18px;
+
+      border-left: 5px solid var(--coral);
+
+      box-shadow:
+        0 10px 35px rgba(51,51,51,0.1);
+    }
+
+    .about-card p + p {
+      margin-top: 15px;
+    }
+
+    /* =========================
+       PICTURES
+    ========================= */
+
+    .pictures {
+      background: linear-gradient(
+        135deg,
+        #F5F4FA,
+        #B6A3B4
+      );
+    }
+
+    .picture-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .picture-card {
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--white);
+
+      box-shadow:
+        0 10px 30px rgba(51,51,51,0.12);
+
+      transition: 0.3s;
+    }
+
+    .picture-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .picture-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .picture-card-content {
+      padding: 18px;
+    }
+
+    .picture-card-content h3 {
+      margin-bottom: 5px;
+    }
+
+    .picture-card-content p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills {
+      background: var(--white);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      padding: 28px;
+      background: var(--light);
+
+      border-radius: 18px;
+      border-top: 4px solid var(--cyan);
+
+      box-shadow:
+        0 8px 25px rgba(51,51,51,0.08);
+
+      transition: 0.3s;
+    }
+
+    .skill-card:nth-child(even) {
+      border-top-color: var(--coral);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-card h3 {
+      margin-bottom: 15px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tags span {
+      padding: 7px 12px;
+      border-radius: 30px;
+
+      background: linear-gradient(
+        90deg,
+        rgba(240,109,120,0.18),
+        rgba(85,200,232,0.18)
+      );
+
+      border: 1px solid rgba(85,200,232,0.25);
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      background: var(--gradient);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .contact-card {
+      padding: 28px;
+      border-radius: 18px;
+
+      background: rgba(255,255,255,0.35);
+      border: 1px solid rgba(255,255,255,0.5);
+
+      transition: 0.3s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.55);
+    }
+
+    .contact-card h3 {
+      margin-bottom: 7px;
+    }
+
+    .contact-card p {
+      color: #444;
+      word-break: break-word;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 22px;
+      text-align: center;
+
+      background: var(--black);
+      color: var(--white);
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-text {
+        margin: auto;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .hero-image {
+        order: -1;
+        min-height: 350px;
+      }
+
+      .image-ring {
+        width: 330px;
+        height: 330px;
+      }
+
+      .profile-picture {
+        width: 300px;
+        height: 300px;
+      }
+
+      .picture-grid,
+      .skills-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      nav {
+        padding: 0 16px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 60px 16px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero h2 {
+        font-size: 20px;
+      }
+
+      section {
+        padding: 65px 16px;
+      }
+
+      .section-title h2 {
+        font-size: 31px;
+      }
+
+      .image-ring {
+        width: 275px;
+        height: 275px;
+      }
+
+      .profile-picture {
+        width: 250px;
+        height: 250px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-  <header class="header">
-    <nav class="navbar">
-      <a href="#home" class="logo">Nishit<span>.</span></a>
+  <!-- =========================
+       HEADER
+  ========================= -->
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+  <header>
+    <nav>
 
-      <ul class="nav-links" id="navLinks">
+      <a href="#home" class="logo">
+        Nishit<span>.</span>
+      </a>
+
+      <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About Me</a></li>
+        <li><a href="#pictures">Pictures</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+
     </nav>
   </header>
 
-  <main>
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">WELCOME TO MY PORTFOLIO</p>
-        <h1>Hi, I'm <span>Nishit Chaudhari</span></h1>
-        <h2>Software Testing & Java Full Stack Enthusiast</h2>
-        <p class="hero-text">
-          BCA graduate with knowledge of manual testing, Java, HTML, CSS, MySQL,
-          Selenium basics and software testing methodologies.
-        </p>
 
-        <div class="hero-buttons">
-          <a href="#projects" class="btn primary">View My Projects</a>
-          <a href="Nishit_Chaudhari_Resume.pdf" class="btn secondary" download>Download Resume</a>
-        </div>
+  <!-- =========================
+       HERO
+  ========================= -->
 
-        <div class="social-buttons">
-          <a href="https://github.com/" target="_blank" rel="noopener" class="social-btn">GitHub</a>
-          <a href="https://www.linkedin.com/in/nishit-chaudhari-4520193a4" target="_blank" rel="noopener" class="social-btn">LinkedIn</a>
-        </div>
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="welcome">
+        WELCOME TO MY PORTFOLIO
       </div>
 
-      <div class="hero-image-wrap">
-        <div class="image-ring"></div>
-        <img src="profile.jpg" alt="Nishit Chaudhari profile photo" class="profile-image">
-      </div>
-    </section>
+      <h1>
+        Hi, I'm <span>Nishit Chaudhari</span>
+      </h1>
 
-    <section id="about" class="section">
-      <div class="section-heading">
-        <p>ABOUT</p>
+      <h2>
+        AI/ML Developer & Technology Enthusiast
+      </h2>
+
+      <p class="hero-text">
+        Welcome to my personal portfolio. Explore my journey,
+        skills, projects, experiences, and passion for technology.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#about" class="btn btn-primary">
+          Explore My Portfolio
+        </a>
+
+        <!-- VIEW ONLY - NO DOWNLOAD -->
+        <a
+          href="resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary"
+        >
+          View Resume
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- PROFILE PICTURE -->
+
+    <div class="hero-image">
+
+      <div class="image-ring"></div>
+
+      <!-- Replace with Nishit's actual picture -->
+      <img
+        src="images/nishit-profile.jpg"
+        alt="Nishit Chaudhari"
+        class="profile-picture"
+      >
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section class="about" id="about">
+
+    <div class="container">
+
+      <div class="section-title">
+        <p>GET TO KNOW ME</p>
         <h2>About Me</h2>
       </div>
 
       <div class="about-card">
-        <p>
-          I am Nishit Chaudhari, a BCA graduate interested in software testing
-          and Java Full Stack development. I have knowledge of manual testing,
-          test case design, test execution, defect life cycle, SDLC, STLC,
-          Agile methodology and Waterfall model.
-        </p>
-        <p>
-          I enjoy learning new technologies and improving my technical and
-          software testing skills while contributing to organizational growth.
-        </p>
-      </div>
-    </section>
 
-    <section id="skills" class="section alt">
-      <div class="section-heading">
-        <p>MY EXPERTISE</p>
-        <h2>Skills</h2>
+        <p>
+          Hi, I'm <strong>Nishit Chaudhari</strong>.
+          I'm passionate about technology, artificial intelligence,
+          machine learning, automation, and building creative
+          digital solutions.
+        </p>
+
+        <p>
+          This portfolio showcases my skills, projects, interests,
+          achievements, and experiences. I'm always interested in
+          learning new technologies and turning ideas into useful
+          real-world applications.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PICTURES
+  ========================= -->
+
+  <section class="pictures" id="pictures">
+
+    <div class="container">
+
+      <div class="section-title">
+        <p>MY GALLERY</p>
+        <h2>Pictures</h2>
+      </div>
+
+      <div class="picture-grid">
+
+        <div class="picture-card">
+
+          <img
+            src="images/nishit-profile.jpg"
+            alt="Nishit Chaudhari"
+          >
+
+          <div class="picture-card-content">
+            <h3>About Me</h3>
+            <p>A glimpse into my portfolio.</p>
+          </div>
+
+        </div>
+
+
+        <div class="picture-card">
+
+          <img
+            src="images/project.jpg"
+            alt="Nishit's project"
+          >
+
+          <div class="picture-card-content">
+            <h3>My Projects</h3>
+            <p>Ideas transformed into technology.</p>
+          </div>
+
+        </div>
+
+
+        <div class="picture-card">
+
+          <img
+            src="images/technology.jpg"
+            alt="Technology and AI"
+          >
+
+          <div class="picture-card-content">
+            <h3>Technology</h3>
+            <p>Exploring AI, ML and modern technology.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
+  <section class="skills" id="skills">
+
+    <div class="container">
+
+      <div class="section-title">
+        <p>WHAT I WORK WITH</p>
+        <h2>My Skills</h2>
       </div>
 
       <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Programming & Web</h3>
-          <div class="tags">
-            <span>Java</span><span>HTML</span><span>CSS</span>
-          </div>
-        </div>
 
         <div class="skill-card">
-          <h3>Testing</h3>
+
+          <h3>Programming</h3>
+
           <div class="tags">
-            <span>Manual Testing</span><span>SDLC</span><span>STLC</span>
-            <span>Test Case Design</span><span>Test Execution</span>
-            <span>Defect Life Cycle</span>
+            <span>Python</span>
+            <span>Java</span>
+            <span>JavaScript</span>
+            <span>HTML</span>
+            <span>CSS</span>
           </div>
+
         </div>
+
 
         <div class="skill-card">
-          <h3>Tools & Database</h3>
+
+          <h3>AI & Machine Learning</h3>
+
           <div class="tags">
-            <span>MySQL</span><span>Jira</span><span>Selenium (Basic)</span><span>VS Code</span>
+            <span>Machine Learning</span>
+            <span>Generative AI</span>
+            <span>Deep Learning</span>
+            <span>Automation</span>
           </div>
+
         </div>
+
 
         <div class="skill-card">
-          <h3>Methodologies</h3>
-          <div class="tags">
-            <span>Agile</span><span>Waterfall</span><span>Test Planning</span>
-            <span>Test Scenarios</span>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="projects" class="section">
-      <div class="section-heading">
-        <p>MY WORK</p>
-        <h2>Projects</h2>
-      </div>
-
-      <article class="project-card">
-        <div class="project-number">01</div>
-        <div class="project-content">
-          <h3>ParaBank Web Application</h3>
-          <p>
-            Tested core banking modules including user registration, login,
-            account overview, fund transfer, bill payment and transaction history.
-          </p>
-
-          <div class="project-points">
-            <div>✓ UI testing and field validation</div>
-            <div>✓ Test case preparation and execution</div>
-            <div>✓ Defect identification and reporting</div>
-            <div>✓ Cross-browser testing</div>
-          </div>
+          <h3>Web Development</h3>
 
           <div class="tags">
-            <span>Manual Testing</span><span>Test Cases</span>
-            <span>Jira</span><span>Functional Testing</span>
+            <span>Frontend</span>
+            <span>Responsive Design</span>
+            <span>UI/UX</span>
+            <span>Web Apps</span>
           </div>
-        </div>
-      </article>
-    </section>
 
-    <section id="education" class="section alt">
-      <div class="section-heading">
-        <p>ACADEMIC BACKGROUND</p>
-        <h2>Education & Certification</h2>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2025</span>
-            <h3>BCA – Bachelor of Computer Application</h3>
-            <p>Management Research Institute, Thane</p>
-            <strong>CGPA: 7.0 / 10</strong>
-          </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2025</span>
-            <h3>Java Full Stack Course Certification</h3>
-            <p>FirstBit Solutions, Pune</p>
+
+        <div class="skill-card">
+
+          <h3>Tools & Technologies</h3>
+
+          <div class="tags">
+            <span>Git</span>
+            <span>GitHub</span>
+            <span>APIs</span>
+            <span>Automation</span>
           </div>
+
         </div>
-      </div>
-    </section>
 
-    <section class="section languages-section">
-      <div class="section-heading">
-        <p>COMMUNICATION</p>
-        <h2>Languages</h2>
       </div>
-      <div class="language-list">
-        <span>Marathi</span>
-        <span>English</span>
-        <span>Hindi</span>
-      </div>
-    </section>
 
-    <section id="contact" class="section contact-section">
-      <div class="section-heading">
-        <p>GET IN TOUCH</p>
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+      <div class="section-title">
+        <p>LET'S CONNECT</p>
         <h2>Contact Me</h2>
       </div>
 
       <div class="contact-grid">
+
         <div class="contact-card">
-          <div class="contact-icon">✉</div>
           <h3>Email</h3>
-          <a href="mailto:nishitchaudhari009@gmail.com">nishitchaudhari009@gmail.com</a>
+          <p>
+            your-email@example.com
+          </p>
         </div>
 
         <div class="contact-card">
-          <div class="contact-icon">☎</div>
-          <h3>Phone</h3>
-          <a href="tel:+918010839438">+91 8010839438</a>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-icon">in</div>
           <h3>LinkedIn</h3>
-          <a href="https://www.linkedin.com/in/nishit-chaudhari-4520193a4" target="_blank" rel="noopener">View Profile</a>
+          <p>
+            linkedin.com/in/nishit-chaudhari
+          </p>
         </div>
+
+        <div class="contact-card">
+          <h3>GitHub</h3>
+          <p>
+            github.com/nishit-chaudhari
+          </p>
+        </div>
+
       </div>
-    </section>
-  </main>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
 
   <footer>
-    <p>© 2026 Nishit Chaudhari. All Rights Reserved.</p>
+    © 2026 Nishit Chaudhari | All Rights Reserved
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
